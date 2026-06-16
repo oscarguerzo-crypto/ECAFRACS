@@ -1,15 +1,150 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>ECAFRACS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ECAFRACS - LoopDL Knowledge Base</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<h1>ECAFRACS</h1>
+<div class="container">
 
-<p>Website is working.</p>
+    <!-- LEFT CATEGORY MENU -->
+
+    <aside class="sidebar">
+
+        <h2>ECAFRACS</h2>
+
+        <button class="category-btn"
+            onclick="loadCategory('billing')">
+            Billing
+        </button>
+
+        <button class="category-btn"
+            onclick="loadCategory('network')">
+            Network
+        </button>
+
+        <button class="category-btn"
+            onclick="loadCategory('porting')">
+            Porting
+        </button>
+
+        <button class="category-btn"
+            onclick="loadCategory('account')">
+            Account
+        </button>
+
+        <button class="category-btn"
+            onclick="loadCategory('logistics')">
+            Logistics
+        </button>
+
+        <button class="category-btn"
+            onclick="loadCategory('device')">
+            Device
+        </button>
+
+        <button class="category-btn"
+            onclick="loadCategory('cancel')">
+            Cancel
+        </button>
+
+    </aside>
+
+    <!-- ARTICLE LIST -->
+
+    <section class="article-panel">
+
+        <h3>Articles</h3>
+
+        <div id="articleList">
+
+            Select a category
+
+        </div>
+
+    </section>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="content-panel">
+
+        <div class="top-bar">
+
+            <input
+                type="text"
+                id="searchBox"
+                placeholder="Search articles..."
+                onkeyup="searchArticles()">
+
+            <button
+                class="edit-btn"
+                onclick="toggleEditor()">
+
+                Edit
+
+            </button>
+
+        </div>
+
+        <div class="toolbar">
+
+            <button onclick="formatText('bold')">
+                Bold
+            </button>
+
+            <button onclick="formatText('italic')">
+                Italic
+            </button>
+
+            <button onclick="formatText('underline')">
+                Underline
+            </button>
+
+            <button onclick="formatText('insertUnorderedList')">
+                Bullet List
+            </button>
+
+            <button onclick="formatText('insertOrderedList')">
+                Number List
+            </button>
+
+        </div>
+
+        <h1 id="articleTitle">
+            Welcome
+        </h1>
+
+        <div
+            id="articleContent"
+            class="article-content"
+            contenteditable="false">
+
+            Select an article from the left menu.
+
+        </div>
+
+        <div class="footer-brand">
+
+            LoopDL Customer Support
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="app.js"></script>
 
 </body>
+
 </html>
+```
