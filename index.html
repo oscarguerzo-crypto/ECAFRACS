@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LoopDL Knowledge Base</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+.sidebar{
+    width:250px;
+    border-right:1px solid #ddd;
+    padding:20px;
+}
+
+.category{
+    padding:15px;
+    border:1px solid #000;
+    margin-bottom:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.submenu{
+    width:250px;
+    padding:20px;
+}
+
+.article-list button{
+    width:100%;
+    padding:12px;
+    margin-bottom:8px;
+    cursor:pointer;
+}
+
+.content{
+    flex:1;
+    padding:40px;
+    position:relative;
+}
+
+.edit-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+}
+
+.support{
+    position:absolute;
+    bottom:20px;
+    left:40px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<div class="category" onclick="loadCategory('billing')">
+Billing
+</div>
+
+<div class="category" onclick="loadCategory('network')">
+Network
+</div>
+
+<div class="category" onclick="loadCategory('porting')">
+Porting
+</div>
+
+</div>
+
+<div class="submenu">
+
+<div id="articles" class="article-list">
+
+Select a category
+
+</div>
+
+</div>
+
+<div class="content">
+
+<button class="edit-btn">
+Edit
+</button>
+
+<h1 id="title">Welcome</h1>
+
+<div id="content">
+
+Select an article from the left menu.
+
+</div>
+
+<div class="support">
+LoopDL Customer Support
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const knowledge = {
+
+billing:{
+    "Make Payment":{
+        content:`
+        <ol>
+        <li>Check card expiry date.</li>
+        <li>Verify last four digits.</li>
+        <li>Payments are charged automatically for active subscriptions.</li>
+        </ol>
+        `
+    },
+
+    "Refund":{
+        content:`
+        <ol>
+        <li>Verify refund reason.</li>
+        <li>Check timestamps.</li>
+        <li>Get approval.</li>
+        <li>Process refund.</li>
+        </ol>
+        `
+    }
+},
+
+network:{
+    "Activation":{
+        content:`
+        <ol>
+        <li>Verify eSIM compatibility.</li>
+        <li>Check UK purchase.</li>
+        <li>Restart device.</li>
+        <li>Install eSIM.</li>
+        </ol>
+        `
+    },
+
+    "Transfer eSIM":{
+        content:`
+        <ol>
+        <li>Delete eSIM from old phone.</li>
+        <li>Install on new phone.</li>
+        <li>Sign in to LoopDL app.</li>
+        <li>Follow installation steps.</li>
+        </ol>
+        `
+    }
+}
+
+};
+
+function loadCategory(category){
+
+let html='';
+
+for(let article in knowledge[category]){
+    html += `
+    <button onclick="loadArticle('${category}','${article}')">
+    ${article}
+    </button>
+    `;
+}
+
+document.getElementById('articles').innerHTML=html;
+
+}
+
+function loadArticle(category,article){
+
+document.getElementById('title').innerText=article;
+
+document.getElementById('content').innerHTML=
+knowledge[category][article].content;
+
+}
+
+</script>
+
+</body>
+</html>
